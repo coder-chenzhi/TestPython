@@ -5,9 +5,9 @@
 
 import logging
 
-def fib(max):
+def fib(maximum):
     n, a, b = 0, 0, 1
-    while n < max:
+    while n < maximum:
         yield b
         a, b = b, a + b
         n = n + 1
