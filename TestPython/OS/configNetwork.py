@@ -1,6 +1,16 @@
 """
 @author: zhi chen
-@requires: PyWin32 Module, Python WMI Nodule
+@requires: PyWin32 Module, Python WMI Module
+WMI is Microsoft's implementation of Web-Based Enterprise Management,
+provide pretty much information about a computer system.
+Python WMI module is a lightweight wrapper for PyWin32 module,
+it hides some messy plumbing needed to get Python to talk to the WMI API.
+
+To know more about Python WMI module, you can see this page
+http://timgolden.me.uk/python/wmi/index.html
+
+A useful link about WMI Win32_NetworkAdapterConfiguration class
+http://msdn.microsoft.com/en-us/library/aa394217%28v=vs.85%29.aspx
 """
 
 import wmi
