@@ -1,8 +1,8 @@
-##
-# Created on 14, October, 2014 
-# Test __future__
-# @author: chenzhi
-#
+'''
+Created on 14, October, 2014 
+Test __future__
+@author: chenzhi
+'''
 
 from __future__ import division
 

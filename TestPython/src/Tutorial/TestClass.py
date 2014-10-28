@@ -1,7 +1,8 @@
-##
-# Created on 14, October, 2014
-# Test class
-# @author: chenzhi
+'''
+Created on 14, October, 2014
+Test class
+@author: chenzhi
+'''
 
 import logging
 from types import MethodType

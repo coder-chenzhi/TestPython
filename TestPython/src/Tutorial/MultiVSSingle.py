@@ -1,7 +1,8 @@
-##
-# Created on 14, October, 2014
-# test the efficiency of multiprocess
-# @author: chenzhi
+'''
+Created on 14, October, 2014
+test the efficiency of multiprocess
+@author: chenzhi
+'''
 
 from multiprocessing import Process, Queue
 import os, time, random

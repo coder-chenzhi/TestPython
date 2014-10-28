@@ -1,7 +1,9 @@
-## 
-# Created on 14, October, 2014
-# 
-# @author: chenzhi
+''' 
+Created on 14, October, 2014
+ 
+@author: chenzhi
+'''
+
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

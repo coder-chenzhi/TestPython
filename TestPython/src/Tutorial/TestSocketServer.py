@@ -1,7 +1,8 @@
-## 
-# Created on 14, October, 2014
-# 
-# @author: chenzhi
+''' 
+Created on 14, October, 2014
+ 
+@author: chenzhi
+'''
 
 import socket, threading, time
 
