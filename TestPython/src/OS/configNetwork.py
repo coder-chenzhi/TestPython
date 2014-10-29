@@ -35,3 +35,6 @@ print nic
 nic.EnableStatic(IPAddress=[ip],SubnetMask=[subnetmask])
 nic.SetGateways(DefaultIPGateway=[gateway])
 nic.SetDNSServerSearchOrder(DNSServerSearchOrder=[dnsserver])
+
+print 'config finished.'
+print nic

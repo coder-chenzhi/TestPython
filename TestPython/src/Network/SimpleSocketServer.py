@@ -26,6 +26,6 @@ if __name__ == '__main__':
             sock.close()
             break
         else:
-            sock.sendall('Got message!\n')
+            sock.sendall( 'Server got message!')
     s.close() 
     
