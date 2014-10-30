@@ -10,20 +10,20 @@ ip = '127.0.0.1'    # which ip to connected
 port = 10086  # which port to connected
 maxRecv = 1024  # max length to receive
 
-def listenStdin(msg, fn, pipe):
+def listenStdin(msg, stdin, pipe):
     '''
     start a process to listen to stdin, and whenever receive any
     input from stdin, transprot it to Queue msg.
     
     Args:
         msg: a Queue to share message between processes.
-        fn: redirect system stdin, in order to use stdin in child process.
+        stdin: redirect system stdin, in order to use stdin in child process.
         pipe: communicate between processes
         
     '''
     
     inputs = ''  # store input from stdin
-    sys.stdin  = os.fdopen(fn)
+    sys.stdin  = os.fdopen(stdin)
     
     '''wait for connection established.'''
     while True:

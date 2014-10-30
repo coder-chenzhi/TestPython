@@ -3,9 +3,12 @@ Created on Oct 29, 2014
 
 @author: Chenzhi
 '''
-from multiprocessing import Queue
+from multiprocessing import Process
 
-q = Queue()
-q.put(1)
-print q.get()
-print q.get()
+def f(name):
+    print 'hello', name
+
+if __name__ == '__main__':
+    p = Process(target=f, args=('bob',))
+    p.start()
+    p.join()
