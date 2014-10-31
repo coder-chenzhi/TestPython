@@ -5,8 +5,7 @@ test the efficiency of multiprocess
 '''
 
 from multiprocessing import Process, Queue
-import os, time, random
-
+import time 
 def mysum(begin, end, q):
     i = begin
     sums = 0

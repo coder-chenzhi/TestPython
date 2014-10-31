@@ -1,5 +1,6 @@
 '''
 Created on Oct 28, 2014
+Use select module to support asynchronous
 
 @author: Chenzhi
 '''
@@ -7,11 +8,16 @@ Created on Oct 28, 2014
 import socket
 import sys
 import os
+import select
 from multiprocessing import Process, Pipe
 
 def cmd(pipe, stdin):
     '''
-    server command console
+    server command console, can receive command from stdin
+    
+    Args:
+        pipe: pipe to communicate with other servers
+        stdin: redirect main process stdin
     
     '''
     
@@ -31,22 +37,25 @@ def conn():
     port = 10086
     maxRecv = 65536 
     msg = ''
-    sock = None
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((ip, port))
-    s.listen(1)
+    s.listen(5)
+    inputs = [s]
     while True:
-        print 'Waiting for connection...'
-        sock, addr = s.accept()
-        print 'Accept new connection from %s:%s...' % addr
-        while True:
-            msg = sock.recv(maxRecv)
-            print 'receive message :{', msg, '} from %s:%s' % addr
-            if msg == 'exit':
-                sock.close()
-                break
+        readable, _, _ = select.select(inputs, [], [])
+        for r in readable:
+            if r is s:
+                cn, addr = s.accept()
+                print 'Accept new connection from %s:%s...' % addr
+                inputs.append(cn)
             else:
-                sock.sendall( 'Server got message!')
+                msg = r.recv(maxRecv)
+                print 'receive message :{', msg, '} from %s:%s' % r.getpeername()
+                if msg == 'exit':
+                    inputs.remove(r)
+                    r.close()                    
+                else:
+                    r.sendall( 'Server got message!')
     s.close() 
     
 if __name__ == '__main__':
