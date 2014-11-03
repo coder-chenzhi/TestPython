@@ -1,8 +1,9 @@
 '''
-Created on Oct 28, 2014
 Use select module to support asynchronous
 
+@version: 1.0
 @author: Chenzhi
+@date: 2014.10.28
 '''
 
 import socket
@@ -15,9 +16,8 @@ def cmd(pipe, stdin):
     '''
     server command console, can receive command from stdin
     
-    Args:
-        pipe: pipe to communicate with other servers
-        stdin: redirect main process stdin
+    @param pipe: pipe to communicate with other servers
+    @param stdin: redirect main process stdin
     
     '''
     
@@ -41,7 +41,9 @@ def conn():
     s.bind((ip, port))
     s.listen(5)
     inputs = [s]
+    
     while True:
+        # method select() is the key to support asynchronous.
         readable, _, _ = select.select(inputs, [], [])
         for r in readable:
             if r is s:
@@ -55,7 +57,7 @@ def conn():
                     inputs.remove(r)
                     r.close()                    
                 else:
-                    r.sendall( 'Server got message!')
+                    r.sendall('Server got message!')
     s.close() 
     
 if __name__ == '__main__':
@@ -65,6 +67,7 @@ if __name__ == '__main__':
     cmdProc = Process(target=cmd, args=(cmdPipe, stdin, ))
     connProc.start()
     cmdProc.start()
+
     while True:
         command = mainPipe.recv()
         if command == 'exit':
