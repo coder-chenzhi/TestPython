@@ -13,8 +13,8 @@ import time
 import codecs
 
 url = "https://www.v2ex.com/api/topics/hot.json"
-user_name = "zjuzhichen@zju.edu.cn"
-passwd = "zhichen1994"
+user_name = ""
+passwd = ""
 smtp_serv = "smtp.zju.edu.cn"
 send_to = "zilingqishi@gmail.com"
 
